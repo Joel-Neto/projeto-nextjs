@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 
-export default function products() {
+export default function Products() {
   return  (
     <>
       <Head>
