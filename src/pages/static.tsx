@@ -8,19 +8,22 @@ type ApiResponse = {
   timestamp: Date;
 };
 
-export const getStaticProps: GetStaticProps = async() => {
-  const staticData = await fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/hello`).then(res => res.json());
+export const getStaticProps: GetStaticProps = async () => {
+  const staticData = await fetch(
+    `${process.env.NEXT_PUBLIC_APIURL}/api/hello`
+  ).then((res) => res.json());
 
   return {
     props: {
-      staticData
-    }
-  }
-}
+      staticData,
+    },
+    revalidate: 15,
+  };
+};
 
 export default function Static(props: {
   chidren?: ReactNode;
-  staticData?: ApiResponse
+  staticData?: ApiResponse;
 }) {
   const [clientSideData, setClientSideData] = useState<ApiResponse>();
 
@@ -48,7 +51,8 @@ export default function Static(props: {
         <Row>
           <Col>
             <h3>
-              Gerado de forma estática durante o Build: {props.staticData?.timestamp.toString()}
+              Gerado de forma estática durante o Build:{" "}
+              {props.staticData?.timestamp.toString()}
             </h3>
           </Col>
 
