@@ -1,7 +1,23 @@
+import Header from "@/components/Header";
+import ProductCard from "@/components/ProductCard";
+import ProductsList from "@/components/ProductsList";
+import { ProductInterface, fetchProducts } from "@/services/products";
+import { GetStaticProps } from "next";
 import Head from "next/head";
-import React from "react";
+import React, { ReactNode } from "react";
+import { Container } from "reactstrap";
 
-export default function Products() {
+export const getStaticProps: GetStaticProps = async () => {
+  const products = await fetchProducts();
+  return { props: {products}}
+}
+
+
+
+export default function Products(props: {
+  children?: ReactNode,
+  products: ProductInterface[]
+}) {
   return  (
     <>
       <Head>
@@ -11,8 +27,12 @@ export default function Products() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header color="dark" light={true} dark={true} expand="md"/>
+
       <main>
-        <h1>Produtos</h1>
+        <Container className="py-5">
+          {props.products && <ProductsList products={props.products}/>}
+        </Container>
       </main>
     </>
   );

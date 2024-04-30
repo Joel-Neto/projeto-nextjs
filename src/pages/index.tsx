@@ -1,5 +1,8 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
+import { Button, Col, Container, Row } from "reactstrap";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,15 +16,39 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Welcome to Next.js</h1>
+      <Header color="dark" light={true} dark={true} expand="md" />
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa corrupti
-          blanditiis maiores praesentium quas, officia error. Architecto
-          repellendus fugit rem voluptatibus ex. Facilis ipsa odio debitis earum
-          libero nostrum doloribus.
-        </p>
+      <main>
+        <Container className="py-4 text-center">
+          <Row>
+            <Col>
+              <h1 className="mt-5 display-1">
+                O melhor jeito de comprar o que você ama.
+              </h1>
+            </Col>
+          </Row>
+          <Row className="d-flex justify-content-center my-4">
+            <Col md="10">
+              <p>
+                Descubra o universo da tecnologia com nossa loja online, onde a
+                inovação encontra a conveniência. Navegue por uma seleção
+                cuidadosamente curada de eletrônicos de última geração, todos
+                disponíveis ao alcance de um clique.
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Link href="/products">
+                <div>
+                  <Button color="dark" size="lg">
+                    Conheça nossos produtos!
+                  </Button>
+                </div>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
       </main>
     </>
   );
