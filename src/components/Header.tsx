@@ -7,12 +7,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
 } from "reactstrap";
 
 function Header(props: {
@@ -29,7 +23,7 @@ function Header(props: {
   return (
     <div>
       <Navbar {...props} className="py-4 px-3">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/"><i>NEXT</i> eletrônicos</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
